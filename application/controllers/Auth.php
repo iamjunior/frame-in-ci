@@ -5,14 +5,13 @@ class Auth extends CI_Controller {
 
 	public function __construct() {
         parent::__construct();
-        $this->load->model('UserModel');
         $this->load->library('form_validation');
     }
 
 	public function index()
 	{
 		$session = $this->session->userdata('login-pond');
-			if(($session != 'LoginKu')){
+			if(($session != 'LoginKu') or ($session != 'RootKu')){
 				$this->load->view('auth/login');
 			}else{
 				redirect('Home');
@@ -29,7 +28,7 @@ class Auth extends CI_Controller {
         $cek        = $this->UserModel->chekLogin($username,md5($password));
         if($this->form_validation->run() != TRUE){
             $this->load->view('auth/login');
-        }elseif(($username=='root')&&($password=='iniakuroot')){
+        }elseif(($username=='root')&&($password=='root')){
             $this->session->set_userdata(array(
                 'login-pond'            => "RootKu",
 				'kduser-pond'       	=> 'ROOT',

@@ -18,7 +18,7 @@ class UserModel extends CI_Model{
     //digunakan untuk hak akses per modul
     public function akses($field,$val){
         $this->db->join('tb_user','tb_hakakses.id_user = tb_user.id_user');
-        $this->db->where('kd_user',$this->session->userdata('kduser-reg'));
+        $this->db->where('kd_user',$this->session->userdata('kduser-pond'));
         $q   = $this->db->get('tb_hakakses')->first_row();
 
         $key = explode(",", $q->$field);
