@@ -24,4 +24,52 @@ class UserModel extends CI_Model{
         $key = explode(",", $q->$field);
         return $key[$val];
     }
+
+    function KDUser(){
+        $this->db->select('RIGHT(kd_user,4) as kode', FALSE);
+        $this->db->order_by('kd_user', 'DESC');
+        $this->db->limit(1);
+  
+        $q = $this->db->get('tb_user');
+  
+        if ($q->num_rows() <> 0) {
+  
+                //jika kode sudah ada
+                $data = $q->row();
+                $kode = intval($data->kode) + 1;
+  
+            }else{
+                //jika kode belum ada
+                $kode = 1;
+            }
+            $kodemax = str_pad($kode, 4, "0", STR_PAD_LEFT);
+            $kodejadi = 'U'.$kodemax;
+  
+            return $kodejadi;
+  
+      }
+
+    function Show(){
+        $this->db->order_by('kd_user','ASC');
+        return $this->db->get('tb_user');
+    }
+
+    function Detail(){
+        $this->db->where('id_user',$this->uri->segment('2'));
+        return $this->db->get('tb_user');
+    }
+
+    function Put(){
+        $dtarray = array(
+            'kd_user'       => $this->KDUser(),
+            'username'      => $this->input->post('username',TRUE),
+            'nama_lengkap'  => $this->input->post('nama_lengkap',TRUE),
+            'password_user' => MD5('user12345'),
+            'status_user'   => $this->input->post('status_user',TRUE),
+            'kd_atasan'     => $this->input->post('kd_atasan',TRUE),
+            'kd_departemen' => $this->input->post('kd_departemen',TRUE),
+            'level_user'    => $this->input->post('level_user',TRUE),
+        );
+        $this->db->insert('tb_user',$dtarray);
+    }
 }

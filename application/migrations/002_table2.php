@@ -18,19 +18,19 @@ public function __construct(){
                                 'type'          => 'INT',
                                 'constraint'    => 11,
                         ),
-                        'ops_user' => array(
+                        'aks_user' => array(
                                 'type'          => 'VARCHAR',
                                 'constraint'    => '10',
                                 'null'          => TRUE,
                                 'default'       => '1,,,,',
                         ),
-                        'ops_home' => array(
+                        'aks_home' => array(
                                 'type'          => 'VARCHAR',
                                 'constraint'    => '10',
                                 'null'          => TRUE,
                                 'default'       => '1,1,1,1,1',
                         ),
-                        'ops_log' => array(
+                        'aks_log' => array(
                                 'type'          => 'VARCHAR',
                                 'constraint'    => '10',
                                 'null'          => TRUE,

@@ -9,11 +9,16 @@ class Home extends MY_Controller {
 	}
 	
 	public function index(){
-		$this->cekAkses('ops_home','0');
-
+		$this->cekAkses('aks_home','0');
 		$dt = array(
-			'tampol' => $this->cobaTampilkan()
+			$this->menu(),
+			'login' 	=> $this->session->userdata('login-pond'),
+			'kdusr' 	=> $this->session->userdata('kduser-pond'),
+			'username' 	=> $this->session->userdata('username-pond'),
+			'depart' 	=> $this->session->userdata('depart-pond'),
+			'cabang' 	=> $this->session->userdata('cabang-pond'),
+			'tampol' 	=> $this->cobaTampilkan()
 		);
-		$this->load->view('home/home',$dt);
+		$this->parser->parse('home/home',$dt);
 	}
 }

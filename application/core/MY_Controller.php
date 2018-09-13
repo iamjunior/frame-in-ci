@@ -41,6 +41,9 @@ class MY_Controller extends CI_Controller
         }
   }
 
+  public function menu(){
+      return $inidata = "'SATU' => 'MENU SATU','DUA' => 'MENU DUA','DUA' => 'MENU DUA'";
+  }
   public function cobaTampilkan(){
       $tampil = 'tampolkan ini';
     

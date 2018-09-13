@@ -29,9 +29,9 @@ class SeederModel extends CI_Model{
         $inserted = 'U0000'.'|'.date('Y/m/d').'|'.date('H:m:s');
         $dtarray = array(
             'id_user'           => $id,
-            'ops_user'          => '1,1,1,1,1',
-            'ops_home'          => '1,1,1,1,1',
-            'ops_log'           => '1,1,1,1,1',
+            'aks_user'          => '1,1,1,1,1',
+            'aks_home'          => '1,1,1,1,1',
+            'aks_log'           => '1,1,1,1,1',
             'creator_akses'     => 'U0000',
             'editor_akses'      => 'U0000',
             'his_akses'          => $inserted);
